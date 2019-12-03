@@ -45,7 +45,8 @@ public class Main {
     
     public static void main(String[] args) throws AWTException {
         Robot robo = new Robot();
-        JLabel emptyLabel = new JLabel("kkkkkkkkkkkkkkkkk");
+        JLabel emptyLabel = new JLabel("");
+        emptyLabel.setText(" Para cancelar a execução finalize a janela. ");
         JFrame janela = new JFrame("Atualizar Páginas");
         try{
             janela.add(emptyLabel);
@@ -55,6 +56,7 @@ public class Main {
             janela.setVisible(true);
             //Scanner entrada = new Scanner("System.in");
             int op = JOptionPane.showConfirmDialog(janela, "Deseja atualizar as 16 abas do navegador?");
+            janela.setSize(300, 150);
             //0 para sim // 1 para não // 2 para cancelar
             //System.out.println(op);
             switch(op){
