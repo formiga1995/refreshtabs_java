@@ -11,10 +11,13 @@ package com.mycompany.refreshtabs;
  */
 //import java.util.Scanner;
 import java.awt.AWTException;
+import java.awt.BorderLayout;
+import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import javax.swing.JLabel;
 
 
 //import java.util.concurrent.TimeUnit;
@@ -42,29 +45,40 @@ public class Main {
     
     public static void main(String[] args) throws AWTException {
         Robot robo = new Robot();
-        JFrame janela = new JFrame("Janela");
-        //Scanner entrada = new Scanner("System.in");
-        int op = JOptionPane.showConfirmDialog(janela, "Deseja atualizar as 16 abas do navegador?");
-        //0 para sim // 1 para não // 2 para cancelar
-        //System.out.println(op);
-        switch(op){
-            case 0:
-                //System.out.println("ATUALIZAR ABAS");
-                while(op == 0){
-                    AtualizarAbas(janela, robo);
-                }
-                break;
-            case 1: 
-                //System.out.println("Não faz nada");
-                break;
-            case 2:
-                System.exit(0);
-                break;
+        JLabel emptyLabel = new JLabel("kkkkkkkkkkkkkkkkk");
+        JFrame janela = new JFrame("Atualizar Páginas");
+        try{
+            janela.add(emptyLabel);
+            janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            janela.getContentPane();
+            janela.pack();
+            janela.setVisible(true);
+            //Scanner entrada = new Scanner("System.in");
+            int op = JOptionPane.showConfirmDialog(janela, "Deseja atualizar as 16 abas do navegador?");
+            //0 para sim // 1 para não // 2 para cancelar
+            //System.out.println(op);
+            switch(op){
+                case 0:
+                    //System.out.println("ATUALIZAR ABAS");
+                    while(op == 0){
+                        AtualizarAbas(janela, robo);
+                    }
+                    break;
+                case 1: 
+                    //System.out.println("Não faz nada");
+                    break;
+                case 2:
+                    System.exit(0);
+                    break;
+            }
+            //entrada de dados - aceita um int 
+            //var = entrada.nextLine();
+            //System.out.println("3 segundos");
+
+            System.exit(0);
+        }catch(HeadlessException e){
+            JOptionPane.showMessageDialog(janela, "Sorry, something went wrong! Error code: "+e);
+            System.exit(0);
         }
-        //entrada de dados - aceita um int 
-        //var = entrada.nextLine();
-        //System.out.println("3 segundos");
-        
-        System.exit(0);
     }
 }
