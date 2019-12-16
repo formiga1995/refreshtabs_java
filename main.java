@@ -7,7 +7,7 @@ package com.mycompany.refreshtabs;
 
 /**
  *
- * @author hepta
+ * @author Gabriel Menezes Formiga
  */
 //import java.util.Scanner;
 import java.awt.AWTException;
@@ -23,17 +23,35 @@ import javax.swing.JLabel;
 //import java.util.concurrent.TimeUnit;
 public class Main {
     static void AtualizarAbas(JFrame janela, Robot robo)     {
-        
+        boolean loop = true;
         try{
-            
-            robo.delay(10000); //espera 10 segundos para clicar na página
-            robo.keyPress(KeyEvent.VK_F5);
-            robo.keyRelease(KeyEvent.VK_F5);
-            robo.delay(6000); //espera 10 segundos para clicar na página
-            robo.keyPress(KeyEvent.VK_CONTROL);
-            robo.keyPress(KeyEvent.VK_TAB);
-            robo.keyRelease(KeyEvent.VK_TAB);
-            robo.keyRelease(KeyEvent.VK_CONTROL);
+            while(loop){
+                //primeira pagina
+                robo.delay(3000); //espera 3 segundos ate  o user  clicar na página
+                robo.keyPress(KeyEvent.VK_CONTROL);
+                robo.keyPress(KeyEvent.VK_F1);
+                robo.keyRelease(KeyEvent.VK_F1);
+                robo.keyRelease(KeyEvent.VK_CONTROL);
+                robo.keyPress(KeyEvent.VK_CONTROL);
+                robo.keyPress(KeyEvent.VK_1);
+                robo.keyRelease(KeyEvent.VK_1);
+                robo.keyRelease(KeyEvent.VK_CONTROL);
+                robo.keyPress(KeyEvent.VK_F5);
+                robo.keyRelease(KeyEvent.VK_F5);
+                robo.delay(60000); 
+                robo.delay(60000); 
+
+                for (int i = 0; i < 16; i++) {
+                    robo.keyPress(KeyEvent.VK_CONTROL);
+                    robo.keyPress(KeyEvent.VK_TAB);
+                    robo.keyRelease(KeyEvent.VK_TAB);
+                    robo.keyRelease(KeyEvent.VK_CONTROL);
+                    robo.keyPress(KeyEvent.VK_F5);
+                    robo.keyRelease(KeyEvent.VK_F5);
+                    robo.delay(15000);
+                }
+               
+        }
             
             
         }catch(Exception e){
